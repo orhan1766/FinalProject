@@ -22,11 +22,11 @@ namespace Business.Concrete
         {
             if (product.ProductName.Length<2)
             {
-                return new ErrorResult(Messages.ProductAdded);
+                return new ErrorResult(Messages.ProductNameInvalid);
             }
             _productDal.Add(product);
 
-            return new SuccessResult(Messages.ProductNameInvalid);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public IDataResult<Product> Get(int productId)
@@ -36,7 +36,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour==01)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
